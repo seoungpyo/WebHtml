@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .header {
+            background-color: #ffcc00;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header audio {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #333;
+            padding: 10px;
+        }
+        .navbar button {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            position: relative;
+        }
+        .character-container {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+        }
+        .character-frame {
+            border: 2px solid #000;
+            padding: 10px;
+            background-color: #fff;
+            display: inline-block;
+        }
+        .character-image {
+            border: 2px solid #000;
+            display: block;
+        }
+        .dialogue {
+            float: left;
+            width: 60%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .chat {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mini Homepage</h1>
+        <audio controls>
+            <source src="audio-file.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="navbar">
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+    </div>
+    <div class="container">
+        <div class="character-container">
+            <div class="character-frame">
+                <img src="character.png" alt="Character Image" class="character-image">
+            </div>
+        </div>
+        <div class="dialogue">
+            <h2>Character's Dialogue</h2>
+            <p>Enter the character's dialogue here.</p>
+            <div class="chat">
+                <h3>Chat</h3>
+                <p>Enter the chat content here.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
