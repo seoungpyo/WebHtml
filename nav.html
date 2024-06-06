@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Example</title>
+    <style>
+        @font-face {
+            font-family: 'Freesentation-9Black';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color : black;
+        }
+
+        nav {
+            background-color: #f5f2da;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            flex: 1; /* 각 li 요소가 동일한 비율로 공간을 차지하도록 설정 */
+        }
+
+        nav ul li button {
+            width: 100%; /* 버튼이 li 요소의 전체 너비를 차지하도록 설정 */
+            padding: 14px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border-radius: 12px;
+            font-family: 'Freesentation-9Black', Arial, sans-serif; /* 폰트 적용 */
+        }
+
+        nav ul li button:hover {
+            background-color: #f2eb86;
+        }
+
+        .outer-menu { 
+        float: left; 
+        width: 100px; height: 20px; 
+        line-height: 20px; 
+        padding: 10px 0; 
+        position: relative; 
+        text-align: center; 
+        font-size: 13px; 
+        font-weight: bold; 
+        z-index: 9999; 
+        } 
+        .outer-menu:hover { background: #E1DFDF; } 
+
+    </style>
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><button onclick="navigateTo('https://www.naver.com/')">Naver</button></li>
+            <li><button onclick="navigateTo('https://www.daum.net')">Daum</button></li>
+            <li><button onclick="navigateTo('https://www.google.com')">Google</button></li>
+            <li><button onclick="navigateTo('https://www.youtube.com')">Youtube</button></li>
+            <li><button onclick="navigateTo('https://www.instagram.com')">Instagram</button></li>
+            <li><button onclick="navigateTo('https://www.scnu.ac.kr')">SCNU</button></li>
+            <li><button onclick="navigateTo('https://www.scnu.ac.kr/scnusw/main.do')">SCNU SW</button></li>
+            <li><button onclick="navigateTo('https://github.com/')">Git</button></li>
+            <div>
+            <ul class="outer-menu"> 
+                <li> 
+                    <a href="#">사용자</a> 
+                    <ul class="inner-menu"> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                    </ul> 
+                </li> 
+            </ul> 
+        </ul>
+        </div>
+    </nav>
+</body>
+</html>
