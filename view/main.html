@@ -1,19 +1,22 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../public/music.css">
     <link rel="stylesheet" href="../public/main.css">
+    <link rel="stylesheet" href="../public/character.css">
+
+    <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
     <header>
         <div class="topLogo">
             <h1>text</h1>
         </div>
-        <audio controls>
-            <source src="audio-file.mp3" type="audio/mpeg">
-        </audio>
     </header>
 
     <div class="nav-container">
@@ -34,10 +37,38 @@
     <div class="main-container">
         <div class="top-content">
             <div class="character-container">
-                
+                <div class="character-box">
+                    <div class="image-box">
+                        <img src="../Img/Charater/Character/Character_1.png" alt="Image">
+                    </div>
+                    <div class="login-box">
+                        <form action="login_process.php" method="post">
+                            <button type="submit" class="login-button">로그인</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="humor-box">
 
+            </div>
+            <div class="music-box">
+                <div class="music-container" id="musicContainer">
+                    <div class="music-info">
+                        <h5 id="musictitle">lucky girl syndrome</h5>
+                        <div class="progress-container" id="progress-container">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+                    <audio id="audio" src="../music/music.m4a" onloadstart="this.volume=0.5" autoplay></audio>
+                        <div class="img-container">
+                    <img src="../Img/Music/post.jpg" alt="cover" id="cover">
+                        </div>
+                        <div class="navigation">
+                            <button id="prev" class="action-btn"><i class="fa-sharp fa-solid fa-backward"></i></button>
+                            <button id="play" class="actiong-btn big"><i class="fa-solid fa-play"></i></button>
+                            <button id="next" class="actiong-btn"><i class="fa-sharp fa-solid fa-forward"></i></button>
+                        </div>
+                </div>
             </div>
             <div class="gptchat">
 
@@ -60,5 +91,7 @@
         </div>
     </div>
 </div>
+
+<script src="../script/main.js"> </script>
 </body>
 </html>
