@@ -1,6 +1,7 @@
+// 온도 그래프를 그리는 함수에 async 키워드 추가
 async function fetchTemperatureData() {
-    const cityName = "Suncheon";  //도시 이름은 영어만 인식함 
-    const apiKey = "c4757c5c0a7e333405504ce6e19616cf"; // 실제 API 키로 바꾸세요.
+    const cityName = "Suncheon";  
+    const apiKey = "c4757c5c0a7e333405504ce6e19616cf"; 
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric&lang=kr`;
     try {
         const response = await fetch(apiUrl);
@@ -17,32 +18,29 @@ async function fetchTemperatureData() {
 
 function plotTemperatureChart(data) {
     const ctx = document.getElementById('temperatureChart').getContext('2d');
-
-    // 날짜와 시간을 포함한 레이블 생성
-    const labels = data.list.slice(0, 3 * 8).map(item => { // 3일치(3 * 8 = 24시간) 데이터만 사용
-    const date = new Date(item.dt * 1000);
-    const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
-    const hours = date.getHours();
-    return `${formattedDate} ${hours}시`;
+    const labels = data.list.slice(0, 3 * 8).map(item => {
+        const date = new Date(item.dt * 1000);
+        const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+        const hours = date.getHours();
+        return `${formattedDate} ${hours}시`;
     });
     const temps = data.list.slice(0, 3 * 8).map(item => item.main.temp);
 
-   // 일별 최고 기온 찾기
     let dailyMaxTemps = {};
-    data.list.slice(0, 3 * 8).forEach(item => { // 3일치 데이터만 사용
-    const date = new Date(item.dt * 1000);
-    const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
-    if (!dailyMaxTemps[formattedDate] || item.main.temp > dailyMaxTemps[formattedDate]) {
-    dailyMaxTemps[formattedDate] = item.main.temp;
+    data.list.slice(0, 3 * 8).forEach(item => {
+        const date = new Date(item.dt * 1000);
+        const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+        if (!dailyMaxTemps[formattedDate] || item.main.temp > dailyMaxTemps[formattedDate]) {
+            dailyMaxTemps[formattedDate] = item.main.temp;
         }
     });
 
     let maxTempPoints = [];
-    data.list.slice(0, 3 * 8).forEach(item => { // 3일치 데이터만 사용
-    const date = new Date(item.dt * 1000);
-    const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
-    if (item.main.temp === dailyMaxTemps[formattedDate]) {
-        maxTempPoints.push({ x: formattedDate + ` ${date.getHours()}시`, y: item.main.temp });
+    data.list.slice(0, 3 * 8).forEach(item => {
+        const date = new Date(item.dt * 1000);
+        const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+        if (item.main.temp === dailyMaxTemps[formattedDate]) {
+            maxTempPoints.push({ x: formattedDate + ` ${date.getHours()}시`, y: item.main.temp });
         }
     });
 
@@ -88,4 +86,4 @@ function plotTemperatureChart(data) {
     });
 }
 
-window.onload = fetchTemperatureData;
+document.addEventListener("DOMContentLoaded", fetchTemperatureData);

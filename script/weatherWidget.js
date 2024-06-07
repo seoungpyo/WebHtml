@@ -40,4 +40,21 @@ function displayWeather(data) {
     document.getElementById("weatherInfo").innerHTML = weatherInfo;
 }
 
+document.getElementById('weatherWidget').addEventListener('click', function() {
+    var modal = document.getElementById('myModal');
+    modal.style.display = "block";
+});
+
+document.getElementsByClassName('close')[0].addEventListener('click', function() {
+    var modal = document.getElementById('myModal');
+    modal.style.display = "none";
+});
+
+window.addEventListener('click', function(event) {
+    var modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
 window.onload = fetchWeather;
