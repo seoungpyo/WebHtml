@@ -1,0 +1,124 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+header{height: 40px; background: red; position:relative;}
+
+header .topLogo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 30px;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header audio{
+    position: absolute;
+    right: 10px;
+    top:50%;
+    transform: translateY(-50%);
+    width: 240px;
+    height: 30px;
+}
+
+.nav-container nav {
+    grid-column: span;
+    background-color: #f5f2da;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container nav ul li {
+    flex: 1; /* 각 li 요소가 동일한 비율로 공간을 차지하도록 설정 */
+}
+
+.nav-container nav ul li button {
+    width: 100%; /* 버튼이 li 요소의 전체 너비를 차지하도록 설정 */
+    padding: 14px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    border-radius: 12px;
+    font-family: 'Freesentation-9Black', Arial, sans-serif; /* 폰트 적용 */
+}
+
+.nav-container nav ul li button:hover {
+    background-color: #f2eb86;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container{
+    width: 1280px;
+}
+
+.main-container .top-content{
+    padding-top: 20px;
+    display: grid;
+    grid-gap: 10px;
+    height: 400px;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(5,1fr);
+}
+
+.top-content .character-container{
+    grid-column: 1;
+    grid-row: 1/6;
+    border: 2px solid black;
+}
+
+.top-content .humor-box{
+    grid-column: 2/5 ;
+    grid-row: 1;
+    border: 2px solid black;
+}
+
+.top-content .gptchat{
+    grid-column: 2/5;
+    grid-row: 2/6;
+    border: 2px solid black;
+}
+
+.main-container .impormation-content{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 830px 420px;
+    grid-gap: 30px;
+    height: 240px;
+}
+
+.impormation-content .news-box{
+    grid-column: 1;
+    border: 2px solid black;
+}
+
+.impormation-content .weather-box{
+    grid-column: 2;
+    border: 2px solid black;
+}
+
+.main-container .ad-box{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.ad-box .ad-item{
+    height: 120px;
+    border: 2px solid black;
+}
