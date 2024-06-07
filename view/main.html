@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../public/music.css">
     <link rel="stylesheet" href="../public/main.css">
     <link rel="stylesheet" href="../public/character.css">
+    <link rel="stylesheet" href="../public/weather.css">
 
     <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
 
@@ -75,12 +76,14 @@
             </div>
         </div>
 
-        <div class="impormation-content">
+        <div class="imformation-content">
             <div class="news-box">
 
             </div>
             <div class="weather-box">
-
+                <div id="weatherWidget">
+                    <div id="weatherInfo"></div>
+                </div>
             </div>
         </div>
 
@@ -92,6 +95,9 @@
     </div>
 </div>
 
-<script src="../script/main.js"> </script>
+<script src="../script/music.js"></script>
+<script src="../script/temperatureChartWidget.js"></script>
+<script src="../script/weatherWidget.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

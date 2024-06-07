@@ -1,11 +1,11 @@
 .music-container {
   position: relative;
-  top:55px;
+  top:50px;
   width: 320px;
   height: 80px;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 1px 20px 20px rgb(222, 185, 185);
+  box-shadow: 1px 10px 20px rgb(222, 185, 185);
   border: 2px solid rgb(222, 185, 185);
 }
 

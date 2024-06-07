@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>서울 날씨 정보</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 맑은 고딕, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        #weatherInfo, #chartContainer {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            flex: 1;
+        }
+        #chartContainer {
+            margin-right: 0;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>오늘의 날씨 정보</h1>
+    <div id="container">
+        <div id="weatherInfo">
+            <h2>로딩 중...</h2>
+        </div>
+        <div id="chartContainer">
+            <canvas id="temperatureChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+    <script>
+        async function fetchWeather() {
+            const cityName = "Suncheon";  //도시 이름은 영어만 인식함 
+            const apiKey = "c4757c5c0a7e333405504ce6e19616cf"; // 실제 API 키로 바꾸세요.
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric&lang=kr`;
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP 오류! 상태: ${response.status}`);
+                }
+                const data = await response.json();
+                displayWeather(data);
+                plotTemperatureChart(data);
+            } catch (error) {
+                console.log(error);
+                document.getElementById("weatherInfo").innerHTML = "<p>날씨 정보를 가져올 수 없습니다.</p>";
+            }
+        }
+
+        function displayWeather(data) {
+            const { city, list } = data;
+            const iconCode = list[0].weather[0].icon;
+            const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+        
+            // 최고/최저 온도 찾기
+            let maxTemp = -Infinity, minTemp = Infinity;
+            list.forEach(item => {
+                if (item.main.temp > maxTemp) maxTemp = item.main.temp;
+                if (item.main.temp < minTemp) minTemp = item.main.temp;
+            });
+        
+            const weatherInfo = `
+                <h2>순천 날씨 
+                <img src="${iconUrl}" alt="날씨 아이콘" style="width: 150px; height: 150px; vertical-align: middle; "></h2>
+                <p>현재 기온: ${list[0].main.temp}°C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 습도: ${list[0].main.humidity}%</p>
+                <p>풍속: ${list[0].wind.speed} m/s  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  최고/최저기온 : ${maxTemp.toFixed(1)}°C / ${minTemp.toFixed(1)}°C</p>
+                <p></p>
+                <p></p>
+            `;
+            document.getElementById("weatherInfo").innerHTML = weatherInfo;
+        }
+
+        function plotTemperatureChart(data) {
+            const ctx = document.getElementById('temperatureChart').getContext('2d');
+
+            // 날짜와 시간을 포함한 레이블 생성
+            const labels = data.list.slice(0, 3 * 8).map(item => { // 3일치(3 * 8 = 24시간) 데이터만 사용
+            const date = new Date(item.dt * 1000);
+            const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+            const hours = date.getHours();
+            return `${formattedDate} ${hours}시`;
+            });
+            const temps = data.list.slice(0, 3 * 8).map(item => item.main.temp);
+
+           // 일별 최고 기온 찾기
+            let dailyMaxTemps = {};
+            data.list.slice(0, 3 * 8).forEach(item => { // 3일치 데이터만 사용
+            const date = new Date(item.dt * 1000);
+            const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+            if (!dailyMaxTemps[formattedDate] || item.main.temp > dailyMaxTemps[formattedDate]) {
+            dailyMaxTemps[formattedDate] = item.main.temp;
+                }
+            });
+
+            let maxTempPoints = [];
+            data.list.slice(0, 3 * 8).forEach(item => { // 3일치 데이터만 사용
+            const date = new Date(item.dt * 1000);
+            const formattedDate = `${date.getMonth() + 1}월 ${date.getDate()}일`;
+            if (item.main.temp === dailyMaxTemps[formattedDate]) {
+                maxTempPoints.push({ x: formattedDate + ` ${date.getHours()}시`, y: item.main.temp });
+                }
+            });
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '기온 (°C)',
+                        data: temps,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false
+                    }, {
+                        type: 'scatter',
+                        label: '최고 기온',
+                        data: maxTempPoints,
+                        backgroundColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: '날짜와 시간'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: '기온 (°C)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = fetchWeather;
+    </script>
+</body>
+</html>

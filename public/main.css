@@ -1,6 +1,6 @@
 *{margin: 0; padding: 0; box-sizing: border-box;}
 
-header{height: 40px; background: red; position:relative;}
+header{height: 40px; background: #ffc9c9; position:relative;}
 
 header .topLogo {
     position: absolute;
@@ -9,7 +9,6 @@ header .topLogo {
     transform: translate(-50%, -50%);
     width: 160px;
     height: 30px;
-    background: blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,22 +91,21 @@ header .topLogo {
     border: 2px solid black;
 }
 
-.main-container .impormation-content{
+.main-container .imformation-content{
     padding-top: 20px;
     display: grid;
-    grid-template-columns: 830px 420px;
-    grid-gap: 30px;
-    height: 240px;
+    grid-template-columns: 870px 400px;
+    grid-gap: 10px;
+    height: 280px;
 }
 
-.impormation-content .news-box{
+.imformation-content .news-box{
     grid-column: 1;
     border: 2px solid black;
 }
 
-.impormation-content .weather-box{
+.imformation-content .weather-box{
     grid-column: 2;
-    border: 2px solid black;
 }
 
 .main-container .ad-box{
