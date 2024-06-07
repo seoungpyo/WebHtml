@@ -1,0 +1,58 @@
+body {
+    background-color: rgb(254, 255, 218);
+    color: black;
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 100vh; /* 화면 전체 높이만큼 설정 */
+    margin: 0; /* body의 기본 마진 제거 */
+  }
+  
+  .card {
+    background-color: gray;
+    color: white;
+    border: none;
+    width: 400px; /* 카드 너비 */
+    padding: 40px; /* 내부 여백 추가 */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #signupForm {
+    text-align: center; /* 텍스트와 버튼 가운데 정렬 */
+  }
+  
+  
+  #signupForm input[type="text"],
+  #signupForm input[type="password"] {
+    width: 100%; /* 입력란 너비 100%로 설정 */
+    padding: 10px; /* 내부 여백 추가 */
+    margin: 10px 0; /* 상하 여백 추가 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비로 설정 */
+  }
+  
+  #signupForm input[type="submit"] {
+    margin: 20px auto; /* 버튼을 수평 중앙 정렬 */
+    display: block; /* 블록 요소로 변경하여 수평 중앙 정렬 적용 */
+  }
+  
+  .btn-primary,
+  .btn-signup {
+    background-color: black !important;
+    color: white !important;
+    border: none !important;
+    padding: 15px 30px; /* 내부 여백 추가 */
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover,
+  .btn-signup:hover {
+    background-color: darkgray !important;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  
