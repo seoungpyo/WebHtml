@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="../public/main.css">
     <link rel="stylesheet" href="../public/character.css">
     <link rel="stylesheet" href="../public/weather.css">
+    <link rel="stylesheet" href="../public/moviePoster.css">
 
-    <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 
 </head>
 <body>
@@ -50,7 +50,9 @@
                 </div>
             </div>
             <div class="humor-box">
-
+                    <div class="joke-box" id="jokeBox">
+                        <p id="jokeText">페이지 로딩 중입니다...</p>
+                    </div>
             </div>
             <div class="music-box">
                 <div class="music-container" id="musicContainer">
@@ -60,15 +62,15 @@
                             <div class="progress" id="progress"></div>
                         </div>
                     </div>
-                    <audio id="audio" src="../music/music.m4a" onloadstart="this.volume=0.5" autoplay></audio>
-                        <div class="img-container">
-                    <img src="../Img/Music/post.jpg" alt="cover" id="cover">
-                        </div>
-                        <div class="navigation">
-                            <button id="prev" class="action-btn"><i class="fa-sharp fa-solid fa-backward"></i></button>
-                            <button id="play" class="actiong-btn big"><i class="fa-solid fa-play"></i></button>
-                            <button id="next" class="actiong-btn"><i class="fa-sharp fa-solid fa-forward"></i></button>
-                        </div>
+                    <audio id="audio" src="../music/lucky girl syndrome.m4a" onloadstart="this.volume=0.5" autoplay></audio>
+                    <div class="img-container">
+                        <img src="../Img/Music/post.jpg" alt="cover" id="cover">
+                    </div>
+                    <div class="navigation">
+                        <button id="prev" class="action-btn"><i class="fa-sharp fa-solid fa-backward"></i></button>
+                        <button id="play" class="action-btn big"><i class="fa-solid fa-play"></i></button>
+                        <button id="next" class="action-btn"><i class="fa-sharp fa-solid fa-forward"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="gptchat">
@@ -77,8 +79,14 @@
         </div>
 
         <div class="imformation-content">
-            <div class="news-box">
-
+            <div class="movie-box">
+                <div class="slider">
+                    <button class="slide-btn" id="prev-btn">&#10094;</button>
+                    <div class="slider-wrapper" id="slider-wrapper">
+                        <div class="slider-content" id="slider-content"></div>
+                    </div>
+                    <button class="slide-btn" id="next-btn">&#10095;</button>
+                </div>
             </div>
             <div class="weather-box">
                 <div id="weatherWidget">
@@ -96,8 +104,9 @@
             </div>
         </div>
 
-        <div class="ad-box">
-            <div class="ad-item">
+        <div class="news-box">
+            <div id="news-slide"></div>
+            <div class="news-item">
 
             </div>
         </div>
@@ -108,6 +117,9 @@
 <script src="../script/temperatureChartWidget.js"></script>
 <script src="../script/weatherWidget.js"></script>
 <script src="../script/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../script/moviePoster.js"></script>
+<script src="../script/humor.js"></script>
+<script src="../script/news.js"></script>
+<script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
 </body>
 </html>

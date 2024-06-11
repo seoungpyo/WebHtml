@@ -8,9 +8,9 @@ const progressContainer = document.getElementById('progress-container');
 const imgCover = document.getElementById("cover");
 const title = document.getElementById("musictitle");
 
-const songs = ["lucky girl syndrome", "lucky girl syndrome", "lucky girl syndrome"];
+const songs = ["lucky girl syndrome", "Super Nova"]; // 여러 곡 추가
 
-let songIndex = 2;
+let songIndex = 0;
 
 loadSong(songs[songIndex]);
 
@@ -21,8 +21,8 @@ window.addEventListener('load', () => {
 
 function loadSong(song) {
     title.innerText = song;
-    audio.src = `../music/music.m4a`;
-    imgCover.src = `../Img/Music/post.jpg`;
+    audio.src = `../music/${song}.m4a`; // 곡 파일 경로 설정
+    imgCover.src = `../Img/Music/${song}.jpg`; // 포스터 이미지 경로 설정
 }
 
 function playMusic() {
@@ -48,7 +48,7 @@ function playPrevSong() {
 
 function playNextSong (){
     songIndex++;
-    if(songIndex > 2){
+    if(songIndex > songs.length - 1){
         songIndex = 0;
     }
     loadSong(songs[songIndex]);
