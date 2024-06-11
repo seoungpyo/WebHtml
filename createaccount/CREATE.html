@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= locals.title %></title>
+  <link rel="stylesheet" href="create.css" />
+  
+</head>
+
+<body>
+  <div class="container">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+      <input type="text" id="name" name="name" placeholder="이름" required>
+      <br>
+      <input type="text" id="birthdate" name="birthdate" placeholder="생년월일" required>
+      <br>
+      <input type="text" id="user_id" name="user_id" placeholder="아이디" required>
+      <br>
+      <input type="password" id="password" name="password" placeholder="비밀번호" required>
+      <br>
+      <input type="submit" value="회원가입">
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="create.js"></script>
+  
+
+</body>
+
+</html>
