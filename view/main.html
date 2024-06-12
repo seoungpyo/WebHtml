@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="../public/character.css">
     <link rel="stylesheet" href="../public/weather.css">
     <link rel="stylesheet" href="../public/moviePoster.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="../public/chat.css">
 
 </head>
 <body>
     <header>
         <div class="topLogo">
-            <h1>text</h1>
+            <img src="../Img/Other/logo.png" alt="로고 이미지">
+            <h1>멀티버스 월드</h1>
         </div>
     </header>
 
@@ -74,7 +74,14 @@
                 </div>
             </div>
             <div class="gptchat">
-
+                <div id="response"></div>
+                <div class="input-container">
+                  <input type="text" id="question" placeholder="질문을 입력하세요">
+                  <button onclick="getAnswer()">답변 받기</button>
+                </div>
+            </div>
+            <div class="robotImg">
+                <img src="../Img/Charater/Character/robot.gif">
             </div>
         </div>
 
@@ -105,10 +112,7 @@
         </div>
 
         <div class="news-box">
-            <div id="news-slide"></div>
-            <div class="news-item">
-
-            </div>
+            
         </div>
     </div>
 </div>
@@ -118,6 +122,8 @@
 <script src="../script/main.js"></script>
 <script src="../script/moviePoster.js"></script>
 <script src="../script/humor.js"></script>
+<script src="../script/chat.js"></script>
 <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 </body>
 </html>
