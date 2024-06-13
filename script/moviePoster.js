@@ -15,7 +15,6 @@ function displayMovies(movies) {
     const sliderContent = document.getElementById('slider-content');
     sliderContent.innerHTML = '';
 
-    // 첫 번째부터 열두 번째 포스터를 클론하여 추가합니다.
     for (let i = 0; i < 12; i++) {
         const clone = createPosterElement(movies[i]);
         sliderContent.appendChild(clone);
@@ -26,7 +25,6 @@ function displayMovies(movies) {
         sliderContent.appendChild(posterDiv);
     });
 
-    // 첫 번째부터 열두 번째 포스터를 다시 클론하여 맨 뒤에 추가합니다.
     for (let i = 0; i < 12; i++) {
         const clone = createPosterElement(movies[i]);
         sliderContent.appendChild(clone);
@@ -54,21 +52,20 @@ let currentIndex = 12;
 function slide(offset) {
     const sliderWrapper = document.getElementById('slider-wrapper');
     const posters = document.querySelectorAll('.poster');
-    const posterWidth = posters[0].clientWidth + 20; // 20 is margin
+    const posterWidth = posters[0].clientWidth + 20; 
 
     currentIndex += offset;
     sliderWrapper.style.transition = 'transform 0.3s ease';
     sliderWrapper.style.transform = `translateX(${-currentIndex * posterWidth}px)`;
 
-    // 무한 루프를 위해 슬라이더의 끝에 도달했을 때 트랜지션을 제거하고 인덱스를 조정합니다.
     setTimeout(() => {
         if (currentIndex <= 11) {
             sliderWrapper.style.transition = 'none';
-            currentIndex = posters.length - 24 + currentIndex; // 12개의 클론이 있으므로 조정
+            currentIndex = posters.length - 24 + currentIndex; 
             sliderWrapper.style.transform = `translateX(${-currentIndex * posterWidth}px)`;
         } else if (currentIndex >= posters.length - 12) {
             sliderWrapper.style.transition = 'none';
-            currentIndex = currentIndex - posters.length + 24; // 12개의 클론이 있으므로 조정
+            currentIndex = currentIndex - posters.length + 24; 
             sliderWrapper.style.transform = `translateX(${-currentIndex * posterWidth}px)`;
         }
     }, 300);
@@ -79,7 +76,6 @@ function updateSlider() {
     const posters = document.querySelectorAll('.poster');
     const posterWidth = posters[0].clientWidth + 20; // 20 is margin
 
-    // 현재 인덱스에 맞게 슬라이더 위치를 설정
     sliderWrapper.style.transform = `translateX(${-currentIndex * posterWidth}px)`;
 }
 

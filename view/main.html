@@ -3,13 +3,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>멀티버스 월드</title>
     <link rel="stylesheet" href="../public/music.css">
     <link rel="stylesheet" href="../public/main.css">
     <link rel="stylesheet" href="../public/character.css">
     <link rel="stylesheet" href="../public/weather.css">
     <link rel="stylesheet" href="../public/moviePoster.css">
     <link rel="stylesheet" href="../public/chat.css">
+    <link rel="stylesheet" href="../public/news.css">
 
 </head>
 <body>
@@ -40,12 +41,24 @@
             <div class="character-container">
                 <div class="character-box">
                     <div class="image-box">
-                        <img src="../Img/Charater/Character/Character_1.png" alt="Image">
+                        <img id="selectedCharacterImg" src="../Img/Charater/Character/Character_1.png" alt="Image">
                     </div>
-                    <div class="login-box">
-                        <form action="login_process.php" method="post">
-                            <button type="submit" class="login-button">로그인</button>
-                        </form>
+                    <div class="characterSetting-box">
+                        <button type="button" class="characterSetting-button" onclick="openModal()">캐릭터 선택</button>
+                    </div>
+                </div>
+            
+                <!-- The Modal -->
+                <div id="characterModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div class="character-icons" id="characterIcons">
+                            <img src="../Img/Charater/Icon/icon_1.png" alt="Character 1" onclick="selectCharacter(0)">
+                            <img src="../Img/Charater/Icon/icon_2.png" alt="Character 1" onclick="selectCharacter(1)">
+                            <img src="../Img/Charater/Icon/icon_3.png" alt="Character 1" onclick="selectCharacter(2)">
+                            <img src="../Img/Charater/Icon/icon_4.png" alt="Character 1" onclick="selectCharacter(3)">
+                            <img src="../Img/Charater/Icon/icon_5.png" alt="Character 1" onclick="selectCharacter(4)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,11 +101,11 @@
         <div class="imformation-content">
             <div class="movie-box">
                 <div class="slider">
-                    <button class="slide-btn" id="prev-btn">&#10094;</button>
+                    <button id="prev-btn" class="slide-btn">&lt;</button>
                     <div class="slider-wrapper" id="slider-wrapper">
                         <div class="slider-content" id="slider-content"></div>
                     </div>
-                    <button class="slide-btn" id="next-btn">&#10095;</button>
+                    <button id="next-btn" class="slide-btn">&gt;</button>
                 </div>
             </div>
             <div class="weather-box">
@@ -112,7 +125,7 @@
         </div>
 
         <div class="news-box">
-            
+            <div id="news"></div>
         </div>
     </div>
 </div>
@@ -123,6 +136,8 @@
 <script src="../script/moviePoster.js"></script>
 <script src="../script/humor.js"></script>
 <script src="../script/chat.js"></script>
+<script src="../script/character.js"></script>
+<script src="../script/news.js"></script>
 <script src="https://kit.fontawesome.com/412379eca8.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 </body>
