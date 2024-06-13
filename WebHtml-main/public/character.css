@@ -1,0 +1,117 @@
+.character-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.image-box {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 20px;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    overflow: hidden;
+    background-size: cover;
+    background-image: url(../Img/Charater/BackGround/CharacterBackGroundImg.jpg);
+}
+
+.characterSetting-box {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+}
+
+.characterSetting-button {
+    background-color: #ffef44;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Modal styles */
+.character-container .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.character-container .modal-content {
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 800px;
+    height: 200px;
+    border-radius: 10px;
+    background-image: url("../Img/Charater/BackGround/icon-background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.character-container .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.character-container .close:hover,
+.character-container .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.character-container .character-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.character-container .character-icons img {
+    width: 120px;
+    height: 120px;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid ;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    border-radius: 50%;
+    border: 2px solid rgb(222, 185, 185);
+    box-shadow: 1px 10px 20px rgb(222, 185, 185);
+}
+
+.character-container .character-icons img:hover {
+    border-color: #ffef44;
+}

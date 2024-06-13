@@ -1,0 +1,50 @@
+.movie-box .slider {
+    position: relative;
+    width: 100%;
+    max-width: 845px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.movie-box .slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+    scroll-snap-type: x mandatory;
+}
+
+.movie-box .slider-content {
+    display: flex;
+}
+
+.movie-box .poster {
+    margin: 10px;
+    scroll-snap-align: start;
+}
+
+.movie-box .poster img {
+    width: 150px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.618);
+}
+
+.movie-box .slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.movie-box #prev-btn {
+    left: 0;
+}
+
+.movie-box #next-btn {
+    right: 0;
+}
